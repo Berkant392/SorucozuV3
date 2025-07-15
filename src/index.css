@@ -1,0 +1,112 @@
+/* Tailwind CSS'in temel, bileşen ve yardımcı sınıflarını projeye dahil et */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global gövde stilleri */
+body { 
+    font-family: 'Inter', sans-serif; 
+    margin: 0;
+    overflow: hidden; /* Sayfa kaydırmasını engelle */
+}
+
+/* Dinamik Arka Plan Animasyonu */
+.animated-gradient {
+    position: relative; 
+    overflow: hidden; 
+    background: linear-gradient(-45deg, #1e3a8a, #4c1d95, #3b0764, #2563eb);
+    background-size: 400% 400%;
+    animation: gradient-move 15s ease infinite;
+}
+
+/* Dalgalı Işık Efekti */
+.animated-gradient::after {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    background: radial-gradient(circle, rgba(192, 132, 252, 0.3) 0%, rgba(192, 132, 252, 0) 60%);
+    animation: wave-effect 20s ease-in-out infinite;
+    will-change: transform;
+}
+
+@keyframes wave-effect {
+    0% { transform: rotate(0deg) translate(-10%, 10%) scale(1); }
+    50% { transform: rotate(180deg) translate(10%, -10%) scale(1.2); }
+    100% { transform: rotate(360deg) translate(-10%, 10%) scale(1); }
+}
+
+@keyframes gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hareketli Baloncuklar */
+.bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.bubble {
+    position: absolute;
+    bottom: -150px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: bubble-rise 25s infinite ease-in;
+    opacity: 0;
+}
+.bubble:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 18s; animation-delay: 0s; }
+.bubble:nth-child(2) { width: 20px; height: 20px; left: 20%; animation-duration: 12s; animation-delay: 1s; }
+.bubble:nth-child(3) { width: 50px; height: 50px; left: 25%; animation-duration: 22s; animation-delay: 0s; }
+.bubble:nth-child(4) { width: 80px; height: 80px; left: 35%; animation-duration: 25s; animation-delay: 3s; }
+.bubble:nth-child(5) { width: 35px; height: 35px; left: 50%; animation-duration: 15s; animation-delay: 0s; }
+.bubble:nth-child(6) { width: 45px; height: 45px; left: 65%; animation-duration: 20s; animation-delay: 1s; }
+.bubble:nth-child(7) { width: 25px; height: 25px; left: 75%; animation-duration: 14s; animation-delay: 4s; }
+.bubble:nth-child(8) { width: 65px; height: 65px; left: 90%; animation-duration: 24s; animation-delay: 2s; }
+.bubble:nth-child(9) { width: 15px; height: 15px; left: 85%; animation-duration: 10s; animation-delay: 5s; }
+.bubble:nth-child(10) { width: 40px; height: 40px; left: 5%; animation-duration: 19s; animation-delay: 6s; }
+.bubble:nth-child(11) { width: 55px; height: 55px; left: 30%; animation-duration: 23s; animation-delay: 8s; }
+.bubble:nth-child(12) { width: 20px; height: 20px; left: 58%; animation-duration: 13s; animation-delay: 9s; }
+@keyframes bubble-rise {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.7; }
+    100% { transform: translateY(-120vh) scale(1.2) rotate(360deg); opacity: 0; }
+}
+
+/* Diğer Özel Sınıflar */
+.rainbow-active { position: relative; z-index: 1; background: #1a202c; color: white; border: 2px solid transparent; }
+.rainbow-active::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000); background-size: 400%; border-radius: 0.5rem; z-index: -1; animation: rainbow-move 3s linear infinite; }
+@keyframes rainbow-move { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+
+.loader { border: 5px solid #f3f3f3; border-top: 5px solid #818cf8; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.halkali-title { animation: text-color-change 6s linear infinite; }
+@keyframes text-color-change { 0% {color: #a78bfa;} 25% {color: #f472b6;} 50% {color: #34d399;} 75% {color: #fb923c;} 100% {color: #a78bfa;} }
+
+.answer-button { transition: all 0.2s ease-in-out; }
+.answer-button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+.feedback-box { position: relative; z-index: 1; border-radius: 12px; background: linear-gradient(135deg, #1e1b4b, #4c1d95); color: white; padding: 20px; overflow: hidden; }
+.feedback-box::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: -2; margin: -2px; border-radius: inherit; background: linear-gradient(90deg, #818cf8, #c084fc, #f0abfc, #c084fc, #818cf8); background-size: 400% 400%; animation: animated-border 4s ease-in-out infinite; }
+@keyframes animated-border { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+.katex { color: #d1d5db; }
+.inline-math { 
+    display: inline-block; 
+    background-color: rgba(71, 85, 105, 0.5); 
+    padding: 2px 8px; 
+    border-radius: 6px; 
+    margin: 0 4px; 
+    border: 1px solid #475569; 
+    vertical-align: baseline; 
+    font-weight: normal !important; 
+}
