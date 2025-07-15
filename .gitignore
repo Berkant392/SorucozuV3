@@ -1,0 +1,47 @@
+# Berkant Hoca tarafından oluşturuldu.
+
+# Bağımlılıklar
+# Projenin çalışması için gereken ama repoda tutulmaması gereken, 'npm install' ile indirilen kütüphane dosyaları.
+node_modules/
+
+# Build Çıktıları
+# Proje 'npm run build' ile derlendiğinde oluşan ve sunucuya yüklenen dosyalar. Kaynak kod olmadıkları için repoda tutulmazlar.
+dist/
+.output/
+.next/
+.nuxt/
+
+# Log Dosyaları
+# Uygulamanın çalışırken oluşturduğu log kayıtları.
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Ortam Değişkenleri (Environment Variables) - EN ÖNEMLİSİ
+# Firebase API anahtarları gibi GİZLİ bilgileri içeren dosyalar.
+# BU SATIRLARIN OLMASI, API ANAHTARLARINIZIN GITHUB'A GİTMESİNİ ENGELLER.
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# IDE ve Editör Ayar Dosyaları
+# Farklı geliştiricilerin kullandığı editörlerin oluşturduğu kişisel ayar dosyaları.
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# İşletim Sistemi Dosyaları
+# macOS ve Windows gibi işletim sistemlerinin oluşturduğu sistem dosyaları.
+.DS_Store
+Thumbs.db
+
+# Test Raporları
+# Testler çalıştırıldığında oluşturulan raporlar.
+coverage/
